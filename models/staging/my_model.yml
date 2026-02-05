@@ -1,0 +1,8 @@
+models:
+  - name: my_model
+    data_tests:
+      - cast_from_metadata:
+          metadata_table: column_validation_rules
+          metadata_schema: dbt_mzaccaron
+          store_failures: true
+          

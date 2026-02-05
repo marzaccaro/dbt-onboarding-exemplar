@@ -1,0 +1,5 @@
+table_name,column_name,expected_type
+my_model,customer_id,integer
+my_model,created_at,timestamp
+my_model,amount,numeric
+my_model,is_active,boolean

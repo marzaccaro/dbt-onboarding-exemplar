@@ -1,0 +1,8 @@
+id,customer_id,name,created_at,amount,is_active
+1,123,Alice,2024-01-15,100.50,true
+2,456,Bob,2024-02-20,250.00,false
+3,not_a_number,Charlie,2024-03-10,75.25,true
+4,789,Diana,invalid_date,300.00,false
+5,101,Eve,2024-04-05,not_numeric,true
+6,202,Frank,2024-05-12,150.75,maybe
+7,abc,Grace,bad_timestamp,oops,yes
