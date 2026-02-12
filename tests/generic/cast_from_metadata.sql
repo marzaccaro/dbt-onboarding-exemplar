@@ -24,7 +24,7 @@
 {% else %}
     select
         '{{ model }}' as model_name,
-        *
+        id as row_id,
         object_construct(
             {% for col_name, exp_type in columns %}
             '{{ col_name }}',
