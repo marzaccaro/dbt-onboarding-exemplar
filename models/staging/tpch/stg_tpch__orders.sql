@@ -24,7 +24,9 @@ renamed as (
         o_shippriority as ship_priority,
 
         -- dates
-        o_orderdate as order_date
+        o_orderdate as order_date,
+        'ciao' as nuova_colonna
+        
 
     from source
 
