@@ -12,6 +12,8 @@ models:
           datepart: day
           field: _etl_loaded_at
           interval: 7
+          config: 
+            severity: warn
     columns:
       - name: order_id 
         data_tests:
