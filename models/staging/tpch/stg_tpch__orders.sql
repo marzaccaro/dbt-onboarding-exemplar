@@ -17,6 +17,7 @@ renamed as (
 
         -- numbers
         o_totalprice as total_price,
+        'dummy' as nuova_colonna,
 
         -- statuses
         o_orderstatus as order_status_code,
