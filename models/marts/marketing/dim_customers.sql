@@ -29,8 +29,9 @@ final as (
         {# region.region_id as region_id, #}
         region.name as region,
         customer.phone_number,
-        customer.account_balance,
-        customer.market_segment
+        customer.account_balance as account_balance,
+        customer.market_segment,
+        'new col' as new_column
     from
         customer
         inner join nation
