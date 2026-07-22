@@ -9,36 +9,74 @@ groups:
 models:
   - name: fct_order_items
     description: order items fact table
+    semantic_model:
+      name: order_items
+      group: finance
+    agg_time_dimension: order_date
     columns:
       - name: order_item_id
         description: '{{ doc("order_item_id") }}'
         data_tests:
           - unique
           - not_null
+        entity:
+          type: primary
+          name: order_item
       - name: order_id
         description: foreign id for orders
+        entity:
+          type: foreign
+          name: order
       - name: order_date
         description: date of the order
+        granularity: day
+        dimension:
+          type: time
       - name: customer_id
         description: foreign id for customers
+        entity:
+          type: foreign
+          name: customer
       - name: part_id
         description: foreign id for part
+        entity:
+          type: foreign
+          name: part
       - name: supplier_id
         description: foreign id for suppliers
+        entity:
+          type: foreign
+          name: supplier
       - name: order_item_status_code
         description: status of the order item
+        dimension:
+          type: categorical
+          name: order_item_status
       - name: return_flag
         description: '{{ doc("return_flag") }}'
+        dimension:
+          type: categorical
       - name: line_number
         description: '{{ doc("line_number") }}'
       - name: ship_date
         description: '{{ doc("ship_date") }}'
+        granularity: day
+        dimension:
+          type: time
       - name: commit_date
         description: '{{ doc("commit_date") }}'
+        granularity: day
+        dimension:
+          type: time
       - name: receipt_date
         description: '{{ doc("receipt_date") }}'
+        granularity: day
+        dimension:
+          type: time
       - name: ship_mode
         description: '{{ doc("ship_mode") }}'
+        dimension:
+          type: categorical
       - name: supplier_cost
         description: '{{ doc("cost") }}'
       - name: base_price
@@ -63,6 +101,42 @@ models:
         description: '{{ doc("item_tax_amount") }}'
       - name: net_item_sales_amount
         description: '{{ doc("net_item_sales_amount") }}'
+    metrics:
+      - name: order_item_count
+        description: Count of order items.
+        type: simple
+        agg: sum
+        expr: order_item_count
+      - name: order_item_quantity
+        description: Total quantity across order items.
+        type: simple
+        agg: sum
+        expr: quantity
+      - name: gross_item_sales
+        description: Gross sales before discounts and tax.
+        type: simple
+        agg: sum
+        expr: gross_item_sales_amount
+      - name: discounted_item_sales
+        description: Sales after discounts and before tax.
+        type: simple
+        agg: sum
+        expr: discounted_item_sales_amount
+      - name: item_discount_amount
+        description: Total discount amount at the order item grain.
+        type: simple
+        agg: sum
+        expr: item_discount_amount
+      - name: item_tax_amount
+        description: Total tax amount at the order item grain.
+        type: simple
+        agg: sum
+        expr: item_tax_amount
+      - name: net_item_sales
+        description: Net sales amount at the order item grain.
+        type: simple
+        agg: sum
+        expr: net_item_sales_amount
 
   - name: fct_orders
     description: orders fact table
