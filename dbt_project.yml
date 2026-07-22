@@ -64,7 +64,9 @@ models:
     staging:
       +materialized: ephemeral
 
+
 tests:
+
   rapid_onboarding_exemplar:
     _samples:
       staging:

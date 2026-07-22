@@ -213,13 +213,8 @@
 
 **Pivot [samples](dbt_utils/pivot.sql)**
 
-
-### dbt_project_evaluator
-
-**Run dbt project evaluator [samples](dbt_project_evaluator/syntax_run_package.md)**
-- Syntax to run the dbt project evaluator package
-
 ### dbt_audit_helper
+
 
 **Compare queries [samples](audit_helper/compare_queries.sql)**
 
